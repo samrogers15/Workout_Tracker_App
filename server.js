@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const path = require('path');
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 
@@ -9,12 +10,13 @@ const PORT = process.env.port || 3000;
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/WorkoutDB', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true });
 
 mongoose.connection.on('error', (err) => console.log(`Error in Mongoose connection: ${err.message}.`));
 
