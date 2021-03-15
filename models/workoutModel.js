@@ -61,11 +61,11 @@ WorkoutSchema.virtual('totalDuration').get(function() {
     }, 0);
 });
 
-WorkoutSchema.virtual('totalWeight').get(function() {
-    return this.exercises.reduce((total, exercise) => {
-        return total + exercise.weight;
-    }, 0)
-})
+// WorkoutSchema.virtual('totalWeight').get(function() {
+//     return this.exercises.reduce((total, exercise) => {
+//         return total + exercise.weight;
+//     }, 0)
+// })
 
 const Workout = mongoose.model('Workout', WorkoutSchema);
 
