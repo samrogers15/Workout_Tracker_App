@@ -14,7 +14,7 @@ app.use(morgan('tiny'));
 app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Workoutdb', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/WorkoutDB', { useNewUrlParser: true });
 
 mongoose.connection.on('error', (err) => console.log(`Error in Mongoose connection: ${err.message}.`));
 
