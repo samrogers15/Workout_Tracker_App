@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/samrogers15/Workout_Tracker_App/issues"
   },
-  "homepage": "https://github.com/samrogers15/Workout_Tracker_App#readme"
+  "homepage": "https://github.com/samrogers15/Workout_Tracker_App#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0",
+    "morgan": "^1.10.0"
+  }
 }
