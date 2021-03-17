@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
+const db = require('./models')
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 
@@ -13,8 +14,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
-app.use('/', htmlRoutes);
-app.use('/api', apiRoutes);
+
+require('./routes/html-routes')(app);
+require('./routes/api-routes')(app);
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true });
 
