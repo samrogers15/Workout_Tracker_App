@@ -5,7 +5,7 @@ router.get('/api/workouts', async (req, res) => {
     try {
         const workouts = await Workout.aggregate([{
             $addFields: {
-                totalDuration: { $sum: '$exercise.duration' },
+                totalDuration: { $sum: '$exercises.duration' },
             }
         }])
         res.json(workouts);
@@ -42,7 +42,7 @@ router.get('/api/workouts/range', async (req, res) => {
     try {
         const workoutRange = await Workout.aggregate([{
             $addFields: {
-                totalDuration: { $sum: '$exercise.duration' },
+                totalDuration: { $sum: '$exercises.duration' },
             }
         }]).limit(7);
         res.json(workoutRange);
@@ -53,50 +53,3 @@ router.get('/api/workouts/range', async (req, res) => {
 })
 
 module.exports = router;
-
-// module.exports = (app) => {
-//     app.get('/api/workouts', (req, res) => {
-//         db.Workout.find({})
-//         .then((data) => {
-//             res.json(data)
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         })
-//     });
-
-//     app.post('/api/workouts', (req, res) => {
-//         db.Workout.create({})
-//         .then((data) => {
-//             res.json(data)
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         })
-//     });
-
-//     app.put('/api/workouts/:id', ({body, params}, res) => {
-//         db.Workout.findByIdAndUpdate(
-//             params.id,
-//             { $push: {exercises: body } },
-//             { new: true }
-//         )
-//         .then((data) => {
-//             res.json(data)
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         })
-//     });
-
-//     app.get('/api/workouts/range', (req, res) => {
-//         db.Workout.find({}).limit(5)
-//         .then((data) => {
-//             res.json(data)
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         })
-//     });
-// }
-
