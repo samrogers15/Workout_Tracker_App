@@ -20,7 +20,15 @@ app.use(logger('dev'));
 app.use(htmlRoutes);
 app.use(apiRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true });
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }
+);
 
 mongoose.connection.on('error', (err) => console.log(`Error in Mongoose connection: ${err.message}.`));
 
