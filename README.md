@@ -5,7 +5,7 @@
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [Live Link](#Live-Link)
-* [Code Snippet](#code-snippet)
+* [Code Snippets](#code-snippets)
 * [Sources](#sources)
 * [Contact](#contact)
 
